@@ -300,6 +300,7 @@
         function resizeCanvas() {
             canvas.width = canvas.parentElement.offsetWidth;
             canvas.height = canvas.parentElement.offsetHeight;
+            initMatrix();
         }
 
         window.addEventListener('resize', resizeCanvas);
@@ -307,9 +308,12 @@
 
         const binary = '10';
         const fontSize = 16;
-        const columns = Math.floor(canvas.width / fontSize);
+        let columns, rainDrops;
 
-        const rainDrops = Array(columns).fill(1);
+        function initMatrix() {
+            columns = Math.floor(canvas.width / fontSize);
+            rainDrops = Array(columns).fill(1);
+        }
 
         const draw = () => {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
@@ -340,6 +344,9 @@
                 });
             });
         });
+
+        // Initial matrix setup
+        initMatrix();
     </script>
 </body>
 </html>
